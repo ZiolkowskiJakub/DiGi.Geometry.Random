@@ -1,7 +1,7 @@
 ﻿using DiGi.Core.Classes;
+using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Planar.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
-using DiGi.Geometry.Spatial.Interfaces;
 using System.Linq;
 
 namespace DiGi.Geometry.Spatial.Random
@@ -33,13 +33,13 @@ namespace DiGi.Geometry.Spatial.Random
                 return null;
             }
 
-            IPolygonal3D polygonal3D = plane.Convert(polygonal2D);
-            if (polygonal2D == null)
+            Polygon2D polygon2D = Planar.Random.Create.Polygon2D(polygonal2D, pointCount, seed, tolerance);
+            if (polygon2D == null)
             {
                 return null;
             }
 
-            throw new System.NotImplementedException();
+            return plane.Convert(polygon2D);
         }
 
         public static Polygon3D Polygon3D(Range<double> x, Range<double> y, Range<double> z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
