@@ -36,7 +36,9 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            return new Point2D(DiGi.Core.Query.Random(x, seed, tolerance), DiGi.Core.Query.Random(y, seed, tolerance));
+            List<int> seeds = DiGi.Core.Query.Seeds(2, seed);
+
+            return new Point2D(DiGi.Core.Query.Random(x, seeds[0], tolerance), DiGi.Core.Query.Random(y, seeds[1], tolerance));
 
         }
 
@@ -48,7 +50,9 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            double x = DiGi.Core.Query.Random(boundingBox2D.Min.X, boundingBox2D.Max.X, seed, tolerance);
+            List<int> seeds = DiGi.Core.Query.Seeds(2, seed);
+
+            double x = DiGi.Core.Query.Random(boundingBox2D.Min.X, boundingBox2D.Max.X, seeds[0], tolerance);
 
             Line2D line2D = new Line2D(new Point2D(x, 0), Constans.Vector2D.WorldY);
 
@@ -102,7 +106,7 @@ namespace DiGi.Geometry.Planar.Random
                 return point2D_1;
             }
             
-            double y = DiGi.Core.Query.Random(point2D_1.Y, point2D_2.Y, seed, tolerance);
+            double y = DiGi.Core.Query.Random(point2D_1.Y, point2D_2.Y, seeds[1], tolerance);
 
             return new Point2D(x, y);
         }

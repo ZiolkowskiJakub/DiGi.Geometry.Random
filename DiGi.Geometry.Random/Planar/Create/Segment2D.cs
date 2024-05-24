@@ -1,5 +1,6 @@
 ﻿using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
+using System.Collections.Generic;
 
 namespace DiGi.Geometry.Planar.Random
 {
@@ -36,10 +37,12 @@ namespace DiGi.Geometry.Planar.Random
 
             Segment2D result = null;
 
+            List<int> seeds = DiGi.Core.Query.Seeds(2, seed);
+
             double length = 0;
             while (length < tolerance)
             {
-                result = new Segment2D(Point2D(x, y, seed, tolerance), Point2D(x, y, seed, tolerance));
+                result = new Segment2D(Point2D(x, y, seeds[0], tolerance), Point2D(x, y, seeds[1], tolerance));
                 length = result.Length;
             }
 

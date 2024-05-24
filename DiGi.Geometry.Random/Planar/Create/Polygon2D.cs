@@ -60,10 +60,13 @@ namespace DiGi.Geometry.Planar.Random
                 return geometry2Ds != null && geometry2Ds.Count > 0;
             });
 
-            List<Point2D> point2Ds = Point2Ds(polygonal2D, 3, seed, tolerance);
+            int seed_Temp = seed;
+
+            List<Point2D> point2Ds = Point2Ds(polygonal2D, 3, seed_Temp, tolerance);
             while (point2Ds.Count < pointCount)
             {
-                Point2D point2D = Point2D(polygonal2D, seed, tolerance);
+                seed_Temp = seed_Temp == -1 ? -1 : seed_Temp + 1;
+                Point2D point2D = Point2D(polygonal2D, seed_Temp, tolerance);
                 if (point2D == null)
                 {
                     continue;

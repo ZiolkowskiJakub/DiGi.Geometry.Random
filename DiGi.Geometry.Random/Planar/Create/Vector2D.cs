@@ -1,5 +1,6 @@
 ﻿using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
+using System.Collections.Generic;
 
 namespace DiGi.Geometry.Planar.Random
 {
@@ -9,11 +10,16 @@ namespace DiGi.Geometry.Planar.Random
         {
             Vector2D result = null;
 
+            int seed_Temp = seed;
+
             double length = 0;
             while (length < tolerance)
             {
-                result = new Vector2D(DiGi.Core.Query.Random(new Range<double>(0, 1), seed, tolerance), DiGi.Core.Query.Random(new Range<double>(0, 1), seed, tolerance));
+                List<int> seeds = DiGi.Core.Query.Seeds(2, seed_Temp);
+                result = new Vector2D(DiGi.Core.Query.Random(new Range<double>(0, 1), seeds[0], tolerance), DiGi.Core.Query.Random(new Range<double>(0, 1), seeds[1], tolerance));
                 length = result.Length;
+
+                seed_Temp = seeds[1];
             }
 
             return result.Unit;
@@ -50,11 +56,16 @@ namespace DiGi.Geometry.Planar.Random
 
             Vector2D result = null;
 
+            int seed_Temp = seed;
+
             double length = 0;
             while (length < tolerance)
             {
-                result = new Vector2D(DiGi.Core.Query.Random(x, seed, tolerance), DiGi.Core.Query.Random(y, seed, tolerance));
+                List<int> seeds = DiGi.Core.Query.Seeds(2, seed_Temp);
+                result = new Vector2D(DiGi.Core.Query.Random(x, seeds[0], tolerance), DiGi.Core.Query.Random(y, seeds[1], tolerance));
                 length = result.Length;
+
+                seed_Temp = seeds[1];
             }
 
             return result;

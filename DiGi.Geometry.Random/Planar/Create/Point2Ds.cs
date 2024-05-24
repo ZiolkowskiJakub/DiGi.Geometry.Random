@@ -26,10 +26,12 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
+            List<int> seeds = DiGi.Core.Query.Seeds(count, seed);
+
             List<Point2D> result = new List<Point2D>();
             for (int i = 0; i < count; i++)
             {
-                result.Add(Point2D(boundingBox2D, seed, tolerance));
+                result.Add(Point2D(boundingBox2D, seeds[i], tolerance));
             }
 
             return result;
@@ -42,10 +44,12 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
+            List<int> seeds = DiGi.Core.Query.Seeds(count, seed);
+
             List<Point2D> result = new List<Point2D>();
             for (int i = 0; i < count; i++)
             {
-                result.Add(Point2D(x, y, seed, tolerance));
+                result.Add(Point2D(x, y, seeds[i], tolerance));
             }
 
             return result;
@@ -70,12 +74,14 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            int count_Temp = DiGi.Core.Query.Random(count);
+            int count_Temp = DiGi.Core.Query.Random(count, seed);
+
+            List<int> seeds = DiGi.Core.Query.Seeds(count_Temp, seed == -1 ? -1 : seed + 1);
 
             List<Point2D> result = new List<Point2D>();
             for (int i = 0; i < count_Temp; i++)
             {
-                result.Add(Point2D(boundingBox2D, seed, tolerance));
+                result.Add(Point2D(boundingBox2D, seeds[i], tolerance));
             }
 
             return result;
@@ -88,10 +94,12 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
+            List<int> seeds = DiGi.Core.Query.Seeds(count, seed);
+
             List<Point2D> result = new List<Point2D>();
             for (int i = 0; i < count; i++)
             {
-                result.Add(Point2D(polygonal2D, seed, tolerance));
+                result.Add(Point2D(polygonal2D, seeds[i], tolerance));
             }
 
             return result;
@@ -104,12 +112,14 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            int count_Temp = DiGi.Core.Query.Random(count);
+            int count_Temp = DiGi.Core.Query.Random(count, seed);
+
+            List<int> seeds = DiGi.Core.Query.Seeds(count_Temp, seed == -1 ? -1 : seed + 1);
 
             List<Point2D> result = new List<Point2D>();
             for (int i = 0; i < count_Temp; i++)
             {
-                result.Add(Point2D(polygonal2D, seed, tolerance));
+                result.Add(Point2D(polygonal2D, seeds[i], tolerance));
             }
 
             return result;
