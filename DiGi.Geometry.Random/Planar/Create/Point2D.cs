@@ -1,6 +1,7 @@
 ﻿using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Planar.Interfaces;
+using DiGi.Math.Classes;
 using System.Collections.Generic;
 
 namespace DiGi.Geometry.Planar.Random
@@ -156,6 +157,83 @@ namespace DiGi.Geometry.Planar.Random
             double y = DiGi.Core.Query.Random(random, point2D_1.Y, point2D_2.Y, tolerance);
 
             return new Point2D(x, y);
+        }
+
+        public static Point2D Point2D(Segment2D segment2D, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        {
+            if(segment2D == null || random == null)
+            {
+                return null;
+            }
+
+            Range<double> range = new Range<double>(segment2D[0].X, segment2D[1].X);
+
+            double x = DiGi.Core.Query.Random(random, range, tolerance);
+
+            if (range.Length < tolerance)
+            {
+                range = new Range<double>(segment2D[0].Y, segment2D[1].Y);
+                if (range.Length < tolerance)
+                {
+                    return null;
+                }
+
+                double y = DiGi.Core.Query.Random(random, range, tolerance);
+
+                return segment2D.Project(new Point2D(x, y), tolerance);
+            }
+
+            LinearEquation linearEquation = segment2D.LinearEquation();
+
+            return segment2D.Project(new Point2D(x, linearEquation.Evaluate(x)), tolerance);
+        }
+
+        public static Point2D Point2D(PolygonalFace2D polygonalFace2D, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        {
+            if(polygonalFace2D == null || random == null)
+            {
+                return null;
+            }
+
+            BoundingBox2D boundingBox2D = polygonalFace2D.GetBoundingBox();
+            if (boundingBox2D.Width < tolerance)
+            {
+                return null;
+            }
+
+            if(boundingBox2D.Height < tolerance)
+            {
+                return null;
+            }
+
+            List<IPolygonal2D> internalEdges = polygonalFace2D.InternalEdges;
+            if(internalEdges == null || internalEdges.Count == 0)
+            {
+                return Point2D(polygonalFace2D.ExternalEdge, random, tolerance);
+            }
+
+            Range<double> range_Y = new Range<double>(boundingBox2D.Min.Y, boundingBox2D.Max.Y);
+
+            Point2D result = null;
+
+            do
+            {
+                result = null;
+
+                double y = DiGi.Core.Query.Random(random, range_Y, tolerance);
+                if(!double.IsNaN(y))
+                {
+                    IntersectionResult2D intersectionResult2D = Planar.Create.IntersectionResult2D(polygonalFace2D, new Line2D(new Point2D(0, y), Constans.Vector2D.WorldX), tolerance);
+                    if(intersectionResult2D != null && intersectionResult2D.Intersect)
+                    {
+
+                    }
+                }
+            }
+            while (result == null || !polygonalFace2D.Inside(result, tolerance));
+
+
+            return result;
         }
     }
 }

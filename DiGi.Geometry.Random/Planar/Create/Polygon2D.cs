@@ -106,37 +106,9 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            Func<Polygon2D, Segment2D, bool> func = new Func<Polygon2D, Segment2D, bool>((x, y) =>
-            {
-                if (x == null || y == null)
-                {
-                    return false;
-                }
+            VolatileBoundable2D<ISegmentable2D> volatileBoundable2D = new VolatileBoundable2D<ISegmentable2D>(polygonal2D);
 
-                IntersectionResult2D intersectionResult2D = Planar.Create.IntersectionResult2D(x, y, tolerance);
-                if (intersectionResult2D == null || !intersectionResult2D.Intersect)
-                {
-                    return true;
-                }
-
-                List<IGeometry2D> geometry2Ds = intersectionResult2D.GetGeometry2Ds<IGeometry2D>();
-                for (int i = geometry2Ds.Count - 1; i >= 0; i--)
-                {
-                    if (geometry2Ds[i] is Point2D)
-                    {
-                        Point2D point2D = (Point2D)geometry2Ds[i];
-                        if (point2D.AlmostEquals(y[0], tolerance) || point2D.AlmostEquals(y[1], tolerance))
-                        {
-                            geometry2Ds.RemoveAt(i);
-                            continue;
-                        }
-                    }
-                }
-
-                return geometry2Ds != null && geometry2Ds.Count > 0;
-            });
-
-            List<Point2D> point2Ds = Point2Ds(polygonal2D, 3, random, tolerance);
+            List<Point2D> point2Ds = new List<Point2D>() { Point2D(polygonal2D, random, tolerance) };
             while (point2Ds.Count < pointCount)
             {
                 Point2D point2D = Point2D(polygonal2D, random, tolerance);
@@ -153,44 +125,58 @@ namespace DiGi.Geometry.Planar.Random
                     continue;
                 }
 
-                Polygon2D polygon2D_Temp = new Polygon2D(point2Ds);
-
-                bool intersect;
-
-                intersect = func.Invoke(polygon2D_Temp, new Segment2D(point2D, point2D_Temp));
-                if (intersect)
-                {
-                    continue;
-                }
-
                 int index = point2Ds.IndexOf(point2D_Temp);
 
                 int nextIndex = DiGi.Core.Query.Next(point2Ds.Count, index);
+                Point2D point2D_Next = point2Ds[nextIndex];
+                Segment2D segment2D_Next = new Segment2D(point2D, point2D_Next);
 
-                point2D_Temp = point2Ds[nextIndex];
-
-                intersect = func.Invoke(polygon2D_Temp, new Segment2D(point2D, point2D_Temp));
-                if (!intersect)
+                if(Query.Intersect(volatileBoundable2D, segment2D_Next, tolerance))
                 {
-                    point2Ds.Insert(nextIndex, point2D);
                     continue;
                 }
 
                 int previousIndex = DiGi.Core.Query.Previous(point2Ds.Count, index);
+                Point2D point2D_Previous = point2Ds[nextIndex];
+                Segment2D segment2D_Previous = new Segment2D(point2D, point2D_Previous);
 
-                point2D_Temp = point2Ds[previousIndex];
-
-                intersect = func.Invoke(polygon2D_Temp, new Segment2D(point2D, point2D_Temp));
-                if (intersect)
+                if (Query.Intersect(volatileBoundable2D, segment2D_Previous, tolerance))
                 {
                     continue;
                 }
 
-                point2Ds.Insert(index, point2D);
+                if(point2Ds.Count < 3)
+                {
+                    point2Ds.Insert(index, point2D);
+                    continue;
+                }
+
+                List<Point2D> point2Ds_Temp = new List<Point2D>(point2Ds);
+                point2Ds_Temp.Insert(index, point2D);
+
+                Polygon2D polygon2D_Temp = new Polygon2D(point2Ds_Temp);
+
+                if (polygon2D_Temp.SelfIntersect(tolerance))
+                {
+                    continue;
+                }
+
+                point2Ds = point2Ds_Temp;
             }
 
             return new Polygon2D(point2Ds);
         }
 
+        public static Polygon2D Polygon2D(IPolygonal2D polygonal2D, Range<int> pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        {
+            if (polygonal2D == null || pointCount == null || random == null)
+            {
+                return null;
+            }
+
+            int pointCount_Temp = DiGi.Core.Query.Random(random, pointCount);
+
+            return Polygon2D(polygonal2D, pointCount_Temp, random, tolerance);
+        }
     }
 }
