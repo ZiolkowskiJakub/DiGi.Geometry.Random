@@ -1,7 +1,6 @@
 ﻿using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Planar.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace DiGi.Geometry.Planar.Random
