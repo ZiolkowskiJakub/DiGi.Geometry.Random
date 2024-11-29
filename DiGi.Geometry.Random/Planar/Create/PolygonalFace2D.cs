@@ -45,7 +45,7 @@ namespace DiGi.Geometry.Planar.Random
 
                 internalEdges = Query.Intersection<IPolygonal2D, IPolygonal2D>(internalEdges);
 
-                string text = DiGi.Core.Convert.ToString(internalEdges);
+                string text = DiGi.Core.Convert.ToSystem_String(internalEdges);
 
                 for (int i = 0; i < internalEdges.Count; i++)
                 {
