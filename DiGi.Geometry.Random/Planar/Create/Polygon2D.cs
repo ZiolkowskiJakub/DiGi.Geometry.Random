@@ -105,8 +105,6 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            VolatileBoundable2D<ISegmentable2D> volatileBoundable2D = new VolatileBoundable2D<ISegmentable2D>(polygonal2D);
-
             List<Point2D> point2Ds = new List<Point2D>() { Point2D(polygonal2D, random, tolerance) };
             while (point2Ds.Count < pointCount)
             {
@@ -130,7 +128,7 @@ namespace DiGi.Geometry.Planar.Random
                 Point2D point2D_Next = point2Ds[nextIndex];
                 Segment2D segment2D_Next = new Segment2D(point2D, point2D_Next);
 
-                if(Query.Intersect(volatileBoundable2D, segment2D_Next, tolerance))
+                if(Query.Intersect(polygonal2D, segment2D_Next, tolerance))
                 {
                     continue;
                 }
@@ -139,7 +137,7 @@ namespace DiGi.Geometry.Planar.Random
                 Point2D point2D_Previous = point2Ds[nextIndex];
                 Segment2D segment2D_Previous = new Segment2D(point2D, point2D_Previous);
 
-                if (Query.Intersect(volatileBoundable2D, segment2D_Previous, tolerance))
+                if (Query.Intersect(polygonal2D, segment2D_Previous, tolerance))
                 {
                     continue;
                 }
