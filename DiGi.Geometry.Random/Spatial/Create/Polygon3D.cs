@@ -8,7 +8,7 @@ namespace DiGi.Geometry.Spatial.Random
 {
     public static partial class Create
     {
-        public static Polygon3D Polygon3D(BoundingBox3D boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
             {
@@ -20,32 +20,32 @@ namespace DiGi.Geometry.Spatial.Random
             return Polygon3D(boundingBox3D, pointCount, random, tolerance);
         }
 
-        public static Polygon3D Polygon3D(BoundingBox3D boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null || random == null)
             {
                 return null;
             }
 
-            Plane plane = Plane(boundingBox3D, random, tolerance);
+            Plane? plane = Plane(boundingBox3D, random, tolerance);
             if (plane == null)
             {
                 return null;
             }
 
-            PlanarIntersectionResult planarIntersectionResult = Spatial.Create.PlanarIntersectionResult(plane, boundingBox3D, tolerance);
+            PlanarIntersectionResult? planarIntersectionResult = Spatial.Create.PlanarIntersectionResult(plane, boundingBox3D, tolerance);
             if (planarIntersectionResult == null || !planarIntersectionResult.Intersect)
             {
                 return null;
             }
 
-            IPolygonal2D polygonal2D = planarIntersectionResult.GetGeometry2Ds<IPolygonal2D>()?.FirstOrDefault();
+            IPolygonal2D? polygonal2D = planarIntersectionResult.GetGeometry2Ds<IPolygonal2D>()?.FirstOrDefault();
             if (polygonal2D == null)
             {
                 return null;
             }
 
-            Polygon2D polygon2D = Planar.Random.Create.Polygon2D(polygonal2D, pointCount, random, tolerance);
+            Polygon2D? polygon2D = Planar.Random.Create.Polygon2D(polygonal2D, pointCount, random, tolerance);
             if (polygon2D == null)
             {
                 return null;
@@ -54,7 +54,7 @@ namespace DiGi.Geometry.Spatial.Random
             return plane.Convert(polygon2D);
         }
 
-        public static Polygon3D Polygon3D(Range<double> x, Range<double> y, Range<double> z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)
             {
@@ -67,7 +67,7 @@ namespace DiGi.Geometry.Spatial.Random
 
         }
 
-        public static Polygon3D Polygon3D(Range<double> x, Range<double> y, Range<double> z, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null || random == null)
             {

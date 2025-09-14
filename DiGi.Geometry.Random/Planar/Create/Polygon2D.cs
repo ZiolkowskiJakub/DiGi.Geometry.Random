@@ -7,14 +7,14 @@ namespace DiGi.Geometry.Planar.Random
 {
     public static partial class Create
     {
-        public static Polygon2D Polygon2D(BoundingBox2D boundingBox2D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(BoundingBox2D? boundingBox2D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox2D == null || pointCount < 3)
             {
                 return null;
             }
 
-            List<Point2D> point2Ds = boundingBox2D.GetPoints();
+            List<Point2D>? point2Ds = boundingBox2D.GetPoints();
             if(point2Ds == null || point2Ds.Count < 3)
             {
                 return null;
@@ -23,14 +23,14 @@ namespace DiGi.Geometry.Planar.Random
             return Polygon2D(new Polygon2D(point2Ds), pointCount, seed, tolerance);
         }
 
-        public static Polygon2D Polygon2D(BoundingBox2D boundingBox2D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(BoundingBox2D? boundingBox2D, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox2D == null || pointCount < 3 || random == null)
             {
                 return null;
             }
 
-            List<Point2D> point2Ds = boundingBox2D.GetPoints();
+            List<Point2D>? point2Ds = boundingBox2D.GetPoints();
             if (point2Ds == null || point2Ds.Count < 3)
             {
                 return null;
@@ -39,7 +39,7 @@ namespace DiGi.Geometry.Planar.Random
             return Polygon2D(new Polygon2D(point2Ds), pointCount, random, tolerance);
         }
 
-        public static Polygon2D Polygon2D(Range<double> x, Range<double> y, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(Range<double>? x, Range<double>? y, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if(x == null || y == null)
             {
@@ -51,7 +51,7 @@ namespace DiGi.Geometry.Planar.Random
             return Polygon2D(x, y, pointCount, random, tolerance);
         }
 
-        public static Polygon2D Polygon2D(Range<double> x, Range<double> y, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(Range<double>? x, Range<double>? y, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || random == null)
             {
@@ -61,7 +61,7 @@ namespace DiGi.Geometry.Planar.Random
             return Polygon2D(new BoundingBox2D(x, y), pointCount, random, tolerance);
         }
 
-        public static Polygon2D Polygon2D(Range<double> x, Range<double> y, Range<int> pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null)
             {
@@ -73,7 +73,7 @@ namespace DiGi.Geometry.Planar.Random
             return Polygon2D(x, y, pointCount, random, tolerance);
         }
 
-        public static Polygon2D Polygon2D(Range<double> x, Range<double> y, Range<int> pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null)
             {
@@ -85,7 +85,7 @@ namespace DiGi.Geometry.Planar.Random
             return Polygon2D(new BoundingBox2D(x, y), pointCount_Temp, random, tolerance);
         }
 
-        public static Polygon2D Polygon2D(IPolygonal2D polygonal2D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(IPolygonal2D? polygonal2D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || pointCount < 3)
             {
@@ -98,25 +98,23 @@ namespace DiGi.Geometry.Planar.Random
 
         }
 
-        public static Polygon2D Polygon2D(IPolygonal2D polygonal2D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(IPolygonal2D? polygonal2D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || pointCount < 3 || random == null)
             {
                 return null;
             }
 
-            List<Point2D> point2Ds = new List<Point2D>() { Point2D(polygonal2D, random, tolerance) };
+            List<Point2D> point2Ds = [Point2D(polygonal2D, random, tolerance)];
             while (point2Ds.Count < pointCount)
             {
-                Point2D point2D = Point2D(polygonal2D, random, tolerance);
+                Point2D? point2D = Point2D(polygonal2D, random, tolerance);
                 if (point2D == null)
                 {
                     continue;
                 }
 
-                Point2D point2D_Temp = null;
-
-                point2D_Temp = point2D.ClosestPoint(point2Ds, out double distance);
+                Point2D? point2D_Temp = point2D.ClosestPoint(point2Ds, out double distance);
                 if (point2D_Temp == null || distance < tolerance)
                 {
                     continue;
@@ -126,16 +124,16 @@ namespace DiGi.Geometry.Planar.Random
 
                 int nextIndex = DiGi.Core.Query.Next(point2Ds.Count, index);
                 Point2D point2D_Next = point2Ds[nextIndex];
-                Segment2D segment2D_Next = new Segment2D(point2D, point2D_Next);
+                Segment2D segment2D_Next = new (point2D, point2D_Next);
 
                 if(Query.Intersect(polygonal2D, segment2D_Next, tolerance))
                 {
                     continue;
                 }
 
-                int previousIndex = DiGi.Core.Query.Previous(point2Ds.Count, index);
+                DiGi.Core.Query.Previous(point2Ds.Count, index);
                 Point2D point2D_Previous = point2Ds[nextIndex];
-                Segment2D segment2D_Previous = new Segment2D(point2D, point2D_Previous);
+                Segment2D segment2D_Previous = new (point2D, point2D_Previous);
 
                 if (Query.Intersect(polygonal2D, segment2D_Previous, tolerance))
                 {
@@ -148,10 +146,10 @@ namespace DiGi.Geometry.Planar.Random
                     continue;
                 }
 
-                List<Point2D> point2Ds_Temp = new List<Point2D>(point2Ds);
+                List<Point2D> point2Ds_Temp = [.. point2Ds];
                 point2Ds_Temp.Insert(index, point2D);
 
-                Polygon2D polygon2D_Temp = new Polygon2D(point2Ds_Temp);
+                Polygon2D polygon2D_Temp = new (point2Ds_Temp);
 
                 if (polygon2D_Temp.SelfIntersect(tolerance))
                 {
@@ -164,7 +162,7 @@ namespace DiGi.Geometry.Planar.Random
             return new Polygon2D(point2Ds);
         }
 
-        public static Polygon2D Polygon2D(IPolygonal2D polygonal2D, Range<int> pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Polygon2D? Polygon2D(IPolygonal2D? polygonal2D, Range<int>? pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || pointCount == null || random == null)
             {

@@ -7,7 +7,7 @@ namespace DiGi.Geometry.Planar.Random
 {
     public static partial class Create
     {
-        public static PolygonalFace2D PolygonalFace2D(Range<double> x, Range<double> y, Range<int> pointCount, Range<int> internalEdgeCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static PolygonalFace2D? PolygonalFace2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, Range<int>? internalEdgeCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || pointCount == null || internalEdgeCount == null)
             {
@@ -19,24 +19,24 @@ namespace DiGi.Geometry.Planar.Random
             return PolygonalFace2D(x, y, pointCount, internalEdgeCount, random, tolerance);
         }
 
-        public static PolygonalFace2D PolygonalFace2D(Range<double> x, Range<double> y, Range<int> pointCount, Range<int> internalEdgeCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static PolygonalFace2D? PolygonalFace2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, Range<int>? internalEdgeCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || pointCount == null || internalEdgeCount == null || random == null)
             {
                 return null;
             }
 
-            Polygon2D externalEdge = Polygon2D(x, y, pointCount, random, tolerance);
+            Polygon2D? externalEdge = Polygon2D(x, y, pointCount, random, tolerance);
 
             int internalEdgeCount_Temp = DiGi.Core.Query.Random(random, internalEdgeCount);
 
-            List<IPolygonal2D> internalEdges = null;
+            List<IPolygonal2D>? internalEdges = null;
             if(internalEdgeCount_Temp > 0)
             {
-                internalEdges = new List<IPolygonal2D>();
+                internalEdges = [];
                 for (int i = 0; i < internalEdgeCount_Temp; i++)
                 {
-                    Polygon2D internalEdge = Polygon2D(externalEdge, pointCount, random, tolerance);
+                    Polygon2D? internalEdge = Polygon2D(externalEdge, pointCount, random, tolerance);
                     if(internalEdge != null)
                     {
                         internalEdges.Add(internalEdge);
@@ -44,19 +44,25 @@ namespace DiGi.Geometry.Planar.Random
                 }
 
                 internalEdges = Query.Intersection<IPolygonal2D, IPolygonal2D>(internalEdges);
-
-                string text = DiGi.Core.Convert.ToSystem_String(internalEdges);
-
-                for (int i = 0; i < internalEdges.Count; i++)
+                if(internalEdges is not null)
                 {
-                    internalEdges[i] = Polygon2D(internalEdges[i], pointCount, random, tolerance);
-                }
+                    for (int i = 0; i < internalEdges.Count; i++)
+                    {
+                        Polygon2D? polygon2D = Polygon2D(internalEdges[i], pointCount, random, tolerance);
+                        if(polygon2D is null)
+                        {
+                            continue;
+                        }
 
-                internalEdges.Sort((x, y) => y.GetArea().CompareTo(x.GetArea()));
+                        internalEdges[i] = polygon2D;
+                    }
 
-                if (internalEdges.Count > internalEdgeCount_Temp)
-                {
-                    internalEdges.RemoveRange(internalEdgeCount_Temp, internalEdges.Count - internalEdgeCount_Temp);
+                    internalEdges.Sort((x, y) => y.GetArea().CompareTo(x.GetArea()));
+
+                    if (internalEdges.Count > internalEdgeCount_Temp)
+                    {
+                        internalEdges.RemoveRange(internalEdgeCount_Temp, internalEdges.Count - internalEdgeCount_Temp);
+                    }
                 }
             }
 
