@@ -195,7 +195,7 @@ namespace DiGi.Geometry.Planar.Random
 
                 double y = DiGi.Core.Query.Random(random, range, tolerance);
 
-                return segment2D.Project(new Point2D(x, y), tolerance);
+                return segment2D.ClosestPoint(new Point2D(x, y));
             }
 
             LinearEquation? linearEquation = segment2D.LinearEquation();
@@ -204,7 +204,7 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            return segment2D.Project(new Point2D(x, linearEquation.Evaluate(x)), tolerance);
+            return segment2D.ClosestPoint(new Point2D(x, linearEquation.Evaluate(x)));
         }
 
         public static Point2D? Point2D(PolygonalFace2D? polygonalFace2D, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
