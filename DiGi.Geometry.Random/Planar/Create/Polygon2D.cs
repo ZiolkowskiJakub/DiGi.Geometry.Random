@@ -105,7 +105,12 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            List<Point2D> point2Ds = [Point2D(polygonal2D, random, tolerance)];
+            if(Point2D(polygonal2D, random, tolerance) is not Point2D point2D_First)
+            {
+                return null;
+            }
+
+            List<Point2D> point2Ds = [point2D_First];
             while (point2Ds.Count < pointCount)
             {
                 Point2D? point2D = Point2D(polygonal2D, random, tolerance);
