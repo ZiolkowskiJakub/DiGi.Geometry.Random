@@ -50,7 +50,6 @@ namespace DiGi.Geometry.Spatial.Random
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return Point3D(x, y, z, random, tolerance);
-
         }
 
         public static Point3D? Point3D(Range<double>? x, Range<double>? y, Range<double>? z, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
@@ -65,7 +64,7 @@ namespace DiGi.Geometry.Spatial.Random
 
         public static Point3D? Point3D(Polygon3D? polygon3D, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
-            if(polygon3D == null)
+            if (polygon3D == null)
             {
                 return null;
             }
@@ -95,7 +94,6 @@ namespace DiGi.Geometry.Spatial.Random
             }
 
             return plane.Convert(point2D);
-
         }
     }
 }

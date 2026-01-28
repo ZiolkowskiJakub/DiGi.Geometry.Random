@@ -14,7 +14,7 @@ namespace DiGi.Geometry.Spatial.Random
 
         public static Vector3D? Vector3D(System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
-            if(random == null)
+            if (random == null)
             {
                 return null;
             }

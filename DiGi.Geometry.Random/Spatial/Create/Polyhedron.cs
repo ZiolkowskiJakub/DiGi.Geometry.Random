@@ -16,8 +16,7 @@ namespace DiGi.Geometry.Spatial.Random
 
             System.Random random = DiGi.Core.Create.Random(seed);
 
-            return Polyhedron(boundingBox3D, pointCount, random, tolerance); 
-
+            return Polyhedron(boundingBox3D, pointCount, random, tolerance);
         }
 
         public static Polyhedron? Polyhedron(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
@@ -65,7 +64,6 @@ namespace DiGi.Geometry.Spatial.Random
                     continue;
                 }
 
-
                 for (int i = 0; i < point3Ds.Count; i++)
                 {
                     IntersectionResult3D? intersectionResult3D = Spatial.Create.IntersectionResult3D(boundingBox3D, point3Ds[i], normal, tolerance);
@@ -75,7 +73,7 @@ namespace DiGi.Geometry.Spatial.Random
                     }
 
                     List<IGeometry3D>? geometry3Ds = intersectionResult3D.GetGeometry3Ds<IGeometry3D>();
-                    if(geometry3Ds != null)
+                    if (geometry3Ds != null)
                     {
                         foreach (IGeometry3D geometry3D in geometry3Ds)
                         {
@@ -87,7 +85,6 @@ namespace DiGi.Geometry.Spatial.Random
                             else if (geometry3D is Segment3D segment3D)
                             {
                                 length_Temp = segment3D.Length;
-
                             }
 
                             if (!double.IsNaN(length_Temp) && length_Temp < length)
@@ -120,10 +117,9 @@ namespace DiGi.Geometry.Spatial.Random
                 return null;
             }
 
-
             System.Random random = DiGi.Core.Create.Random(seed);
 
-            return Polyhedron(x, y , z, pointCount, random, tolerance);
+            return Polyhedron(x, y, z, pointCount, random, tolerance);
         }
 
         public static Polyhedron? Polyhedron(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)

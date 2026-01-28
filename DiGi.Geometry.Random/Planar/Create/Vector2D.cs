@@ -14,7 +14,7 @@ namespace DiGi.Geometry.Planar.Random
 
         public static Vector2D? Vector2D(System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
-            if(random == null)
+            if (random == null)
             {
                 return null;
             }
@@ -75,7 +75,6 @@ namespace DiGi.Geometry.Planar.Random
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return Vector2D(x, y, random, tolerance);
-
         }
 
         public static Vector2D? Vector2D(Range<double>? x, Range<double>? y, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)

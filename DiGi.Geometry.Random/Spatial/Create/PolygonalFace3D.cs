@@ -44,7 +44,6 @@ namespace DiGi.Geometry.Spatial.Random
                 return null;
             }
 
-
             List<Polygon2D>? internalEdge2Ds = null;
 
             bool internalEdge = DiGi.Core.Query.Random(random);
@@ -89,7 +88,6 @@ namespace DiGi.Geometry.Spatial.Random
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return PolygonalFace3D(x, y, z, pointCount, random, tolerance);
-
         }
 
         public static PolygonalFace3D? PolygonalFace3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
@@ -100,7 +98,6 @@ namespace DiGi.Geometry.Spatial.Random
             }
 
             return PolygonalFace3D(Spatial.Create.BoundingBox3D(x, y, z), pointCount, random, tolerance);
-
         }
     }
 }

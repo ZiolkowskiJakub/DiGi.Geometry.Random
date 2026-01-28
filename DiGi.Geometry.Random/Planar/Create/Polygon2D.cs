@@ -15,7 +15,7 @@ namespace DiGi.Geometry.Planar.Random
             }
 
             List<Point2D>? point2Ds = boundingBox2D.GetPoints();
-            if(point2Ds == null || point2Ds.Count < 3)
+            if (point2Ds == null || point2Ds.Count < 3)
             {
                 return null;
             }
@@ -41,7 +41,7 @@ namespace DiGi.Geometry.Planar.Random
 
         public static Polygon2D? Polygon2D(Range<double>? x, Range<double>? y, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
-            if(x == null || y == null)
+            if (x == null || y == null)
             {
                 return null;
             }
@@ -95,7 +95,6 @@ namespace DiGi.Geometry.Planar.Random
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return Polygon2D(polygonal2D, pointCount, random, tolerance);
-
         }
 
         public static Polygon2D? Polygon2D(IPolygonal2D? polygonal2D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
@@ -105,7 +104,7 @@ namespace DiGi.Geometry.Planar.Random
                 return null;
             }
 
-            if(Point2D(polygonal2D, random, tolerance) is not Point2D point2D_First)
+            if (Point2D(polygonal2D, random, tolerance) is not Point2D point2D_First)
             {
                 return null;
             }
@@ -129,23 +128,23 @@ namespace DiGi.Geometry.Planar.Random
 
                 int nextIndex = DiGi.Core.Query.Next(point2Ds.Count, index);
                 Point2D point2D_Next = point2Ds[nextIndex];
-                Segment2D segment2D_Next = new (point2D, point2D_Next);
+                Segment2D segment2D_Next = new(point2D, point2D_Next);
 
-                if(Query.Intersect(polygonal2D, segment2D_Next, tolerance))
+                if (Query.Intersect(polygonal2D, segment2D_Next, tolerance))
                 {
                     continue;
                 }
 
                 DiGi.Core.Query.Previous(point2Ds.Count, index);
                 Point2D point2D_Previous = point2Ds[nextIndex];
-                Segment2D segment2D_Previous = new (point2D, point2D_Previous);
+                Segment2D segment2D_Previous = new(point2D, point2D_Previous);
 
                 if (Query.Intersect(polygonal2D, segment2D_Previous, tolerance))
                 {
                     continue;
                 }
 
-                if(point2Ds.Count < 3)
+                if (point2Ds.Count < 3)
                 {
                     point2Ds.Insert(index, point2D);
                     continue;
@@ -154,7 +153,7 @@ namespace DiGi.Geometry.Planar.Random
                 List<Point2D> point2Ds_Temp = [.. point2Ds];
                 point2Ds_Temp.Insert(index, point2D);
 
-                Polygon2D polygon2D_Temp = new (point2Ds_Temp);
+                Polygon2D polygon2D_Temp = new(point2Ds_Temp);
 
                 if (polygon2D_Temp.SelfIntersect(tolerance))
                 {

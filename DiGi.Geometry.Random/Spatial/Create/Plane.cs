@@ -49,7 +49,6 @@ namespace DiGi.Geometry.Spatial.Random
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return Plane(x, y, z, random, tolerance);
-
         }
 
         public static Plane? Plane(Range<double>? x, Range<double>? y, Range<double>? z, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
@@ -71,9 +70,7 @@ namespace DiGi.Geometry.Spatial.Random
                 return null;
             }
 
-
             return new Plane(point3D, vector3D);
-
         }
     }
 }

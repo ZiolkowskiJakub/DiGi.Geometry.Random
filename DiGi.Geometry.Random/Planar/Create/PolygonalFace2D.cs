@@ -31,25 +31,25 @@ namespace DiGi.Geometry.Planar.Random
             int internalEdgeCount_Temp = DiGi.Core.Query.Random(random, internalEdgeCount);
 
             List<IPolygonal2D>? internalEdges = null;
-            if(internalEdgeCount_Temp > 0)
+            if (internalEdgeCount_Temp > 0)
             {
                 internalEdges = [];
                 for (int i = 0; i < internalEdgeCount_Temp; i++)
                 {
                     Polygon2D? internalEdge = Polygon2D(externalEdge, pointCount, random, tolerance);
-                    if(internalEdge != null)
+                    if (internalEdge != null)
                     {
                         internalEdges.Add(internalEdge);
                     }
                 }
 
                 internalEdges = Query.Intersection<IPolygonal2D, IPolygonal2D>(internalEdges);
-                if(internalEdges is not null)
+                if (internalEdges is not null)
                 {
                     for (int i = 0; i < internalEdges.Count; i++)
                     {
                         Polygon2D? polygon2D = Polygon2D(internalEdges[i], pointCount, random, tolerance);
-                        if(polygon2D is null)
+                        if (polygon2D is null)
                         {
                             continue;
                         }

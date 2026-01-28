@@ -64,7 +64,6 @@ namespace DiGi.Geometry.Spatial.Random
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return Polygon3D(x, y, z, pointCount, random, tolerance);
-
         }
 
         public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
@@ -75,7 +74,6 @@ namespace DiGi.Geometry.Spatial.Random
             }
 
             return Polygon3D(Spatial.Create.BoundingBox3D(x, y, z), pointCount, random, tolerance);
-
         }
     }
 }

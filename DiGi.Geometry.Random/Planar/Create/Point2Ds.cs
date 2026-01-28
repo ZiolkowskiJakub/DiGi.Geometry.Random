@@ -42,7 +42,7 @@ namespace DiGi.Geometry.Planar.Random
             for (int i = 0; i < count; i++)
             {
                 Point2D? point2D = Point2D(boundingBox2D, random);
-                if(point2D is null)
+                if (point2D is null)
                 {
                     continue;
                 }
@@ -124,7 +124,7 @@ namespace DiGi.Geometry.Planar.Random
             for (int i = 0; i < count_Temp; i++)
             {
                 Point2D? point2D = Point2D(boundingBox2D, random);
-                if(point2D is null)
+                if (point2D is null)
                 {
                     continue;
                 }
@@ -158,7 +158,7 @@ namespace DiGi.Geometry.Planar.Random
             for (int i = 0; i < count; i++)
             {
                 Point2D? point2D = Point2D(polygonal2D, random, tolerance);
-                if(point2D is null)
+                if (point2D is null)
                 {
                     continue;
                 }
@@ -194,11 +194,11 @@ namespace DiGi.Geometry.Planar.Random
             for (int i = 0; i < count_Temp; i++)
             {
                 Point2D? point2D = Point2D(polygonal2D, random, tolerance);
-                if(point2D is null)
+                if (point2D is null)
                 {
                     continue;
                 }
-                
+
                 result.Add(point2D);
             }
 
