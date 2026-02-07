@@ -135,7 +135,7 @@ namespace DiGi.Geometry.Planar.Random
             return result;
         }
 
-        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, int count, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, int count, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygonal2D == null)
             {
@@ -147,7 +147,7 @@ namespace DiGi.Geometry.Planar.Random
             return Point2Ds(polygonal2D, count, random, tolerance);
         }
 
-        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, int count, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, int count, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || random == null)
             {
@@ -169,7 +169,7 @@ namespace DiGi.Geometry.Planar.Random
             return result;
         }
 
-        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, Range<int>? count, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, Range<int>? count, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || count == null)
             {
@@ -181,7 +181,7 @@ namespace DiGi.Geometry.Planar.Random
             return Point2Ds(polygonal2D, count, random, tolerance);
         }
 
-        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, Range<int>? count, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static List<Point2D>? Point2Ds(IPolygonal2D? polygonal2D, Range<int>? count, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || count == null || random == null)
             {
