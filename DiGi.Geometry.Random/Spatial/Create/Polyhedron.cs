@@ -7,7 +7,7 @@ namespace DiGi.Geometry.Spatial.Random
 {
     public static partial class Create
     {
-        public static Polyhedron? Polyhedron(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polyhedron? Polyhedron(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
             {
@@ -19,7 +19,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Polyhedron(boundingBox3D, pointCount, random, tolerance);
         }
 
-        public static Polyhedron? Polyhedron(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polyhedron? Polyhedron(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null || random == null)
             {
@@ -110,7 +110,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Spatial.Create.Polyhedron(polygonalFace3D, normal * length);
         }
 
-        public static Polyhedron? Polyhedron(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polyhedron? Polyhedron(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)
             {
@@ -122,7 +122,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Polyhedron(x, y, z, pointCount, random, tolerance);
         }
 
-        public static Polyhedron? Polyhedron(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polyhedron? Polyhedron(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null || random == null)
             {

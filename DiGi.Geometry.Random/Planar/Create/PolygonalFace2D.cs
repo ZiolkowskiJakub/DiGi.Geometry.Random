@@ -7,7 +7,7 @@ namespace DiGi.Geometry.Planar.Random
 {
     public static partial class Create
     {
-        public static PolygonalFace2D? PolygonalFace2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, Range<int>? internalEdgeCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static PolygonalFace2D? PolygonalFace2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, Range<int>? internalEdgeCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || pointCount == null || internalEdgeCount == null)
             {
@@ -19,7 +19,7 @@ namespace DiGi.Geometry.Planar.Random
             return PolygonalFace2D(x, y, pointCount, internalEdgeCount, random, tolerance);
         }
 
-        public static PolygonalFace2D? PolygonalFace2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, Range<int>? internalEdgeCount, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static PolygonalFace2D? PolygonalFace2D(Range<double>? x, Range<double>? y, Range<int>? pointCount, Range<int>? internalEdgeCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || pointCount == null || internalEdgeCount == null || random == null)
             {

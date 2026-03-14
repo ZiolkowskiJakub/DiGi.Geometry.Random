@@ -8,7 +8,7 @@ namespace DiGi.Geometry.Spatial.Random
 {
     public static partial class Create
     {
-        public static Polygon3D? Polygon3D(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
             {
@@ -20,7 +20,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Polygon3D(boundingBox3D, pointCount, random, tolerance);
         }
 
-        public static Polygon3D? Polygon3D(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null || random == null)
             {
@@ -54,7 +54,7 @@ namespace DiGi.Geometry.Spatial.Random
             return plane.Convert(polygon2D);
         }
 
-        public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)
             {
@@ -66,7 +66,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Polygon3D(x, y, z, pointCount, random, tolerance);
         }
 
-        public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Polygon3D? Polygon3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null || random == null)
             {

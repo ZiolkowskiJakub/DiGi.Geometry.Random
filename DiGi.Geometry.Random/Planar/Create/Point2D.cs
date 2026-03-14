@@ -72,7 +72,7 @@ namespace DiGi.Geometry.Planar.Random
             return new Point2D(DiGi.Core.Query.Random(random, x), DiGi.Core.Query.Random(random, y));
         }
 
-        public static Point2D? Point2D(IPolygonal2D? polygonal2D, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Point2D? Point2D(IPolygonal2D? polygonal2D, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (polygonal2D == null)
             {
@@ -84,7 +84,7 @@ namespace DiGi.Geometry.Planar.Random
             return Point2D(polygonal2D, random, tolerance);
         }
 
-        public static Point2D? Point2D(IPolygonal2D? polygonal2D, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Point2D? Point2D(IPolygonal2D? polygonal2D, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (polygonal2D == null || random == null)
             {
@@ -99,7 +99,7 @@ namespace DiGi.Geometry.Planar.Random
 
             double x = DiGi.Core.Query.Random(random, boundingBox2D.Min.X, boundingBox2D.Max.X, tolerance);
 
-            Line2D line2D = new(new Point2D(x, 0), Constants.Vector2D.WorldY);
+            Line2D line2D = new(new Point2D(x, 0), Constans.Vector2D.WorldY);
 
             IntersectionResult2D? intersectionResult2D = Planar.Create.IntersectionResult2D(polygonal2D, line2D, tolerance);
             if (intersectionResult2D == null || !intersectionResult2D.Intersect)
@@ -160,7 +160,7 @@ namespace DiGi.Geometry.Planar.Random
             return new Point2D(x, y);
         }
 
-        public static Point2D? Point2D(Segment2D? segment2D, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Point2D? Point2D(Segment2D? segment2D, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (segment2D == null || random == null)
             {
@@ -203,7 +203,7 @@ namespace DiGi.Geometry.Planar.Random
             return segment2D.ClosestPoint(new Point2D(x, linearEquation.Evaluate(x)));
         }
 
-        public static Point2D? Point2D(PolygonalFace2D? polygonalFace2D, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
+        public static Point2D? Point2D(PolygonalFace2D? polygonalFace2D, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
         {
             if (polygonalFace2D == null || random == null)
             {
@@ -237,7 +237,7 @@ namespace DiGi.Geometry.Planar.Random
                 double y = DiGi.Core.Query.Random(random, range_Y, tolerance);
                 if (!double.IsNaN(y))
                 {
-                    IntersectionResult2D? intersectionResult2D = Planar.Create.IntersectionResult2D(polygonalFace2D, new Line2D(new Point2D(0, y), Constants.Vector2D.WorldX), tolerance);
+                    IntersectionResult2D? intersectionResult2D = Planar.Create.IntersectionResult2D(polygonalFace2D, new Line2D(new Point2D(0, y), Constans.Vector2D.WorldX), tolerance);
                     if (intersectionResult2D != null && intersectionResult2D.Intersect)
                     {
                     }
