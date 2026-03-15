@@ -5,14 +5,14 @@ namespace DiGi.Geometry.Spatial.Random
 {
     public static partial class Create
     {
-        public static Vector3D? Vector3D(int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Vector3D? Vector3D(int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             System.Random random = DiGi.Core.Create.Random(seed);
 
             return Vector3D(random, tolerance);
         }
 
-        public static Vector3D? Vector3D(System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Vector3D? Vector3D(System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (random == null)
             {
@@ -31,7 +31,7 @@ namespace DiGi.Geometry.Spatial.Random
             return result?.Unit;
         }
 
-        public static Vector3D? Vector2D(BoundingBox3D? boundingBox3D, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Vector3D? Vector2D(BoundingBox3D? boundingBox3D, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
             {
@@ -43,7 +43,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Vector3D(boundingBox3D, random, tolerance);
         }
 
-        public static Vector3D? Vector3D(BoundingBox3D? boundingBox3D, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Vector3D? Vector3D(BoundingBox3D? boundingBox3D, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null || random == null)
             {
@@ -65,7 +65,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Vector3D(new Range<double>(min.X, max.X), new Range<double>(min.Y, max.Y), new Range<double>(min.Z, max.Z), random, tolerance);
         }
 
-        public static Vector3D? Vector3D(Range<double>? x, Range<double>? y, Range<double>? z, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Vector3D? Vector3D(Range<double>? x, Range<double>? y, Range<double>? z, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null)
             {
@@ -77,7 +77,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Vector3D(x, y, z, random, tolerance);
         }
 
-        public static Vector3D? Vector3D(Range<double>? x, Range<double>? y, Range<double>? z, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Vector3D? Vector3D(Range<double>? x, Range<double>? y, Range<double>? z, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || random == null)
             {

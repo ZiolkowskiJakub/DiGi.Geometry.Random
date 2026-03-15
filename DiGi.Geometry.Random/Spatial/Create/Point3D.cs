@@ -6,7 +6,7 @@ namespace DiGi.Geometry.Spatial.Random
 {
     public static partial class Create
     {
-        public static Point3D? Point3D(BoundingBox3D? boundingBox3D, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Point3D? Point3D(BoundingBox3D? boundingBox3D, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
             {
@@ -18,7 +18,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Point3D(boundingBox3D, random, tolerance);
         }
 
-        public static Point3D? Point3D(BoundingBox3D? boundingBox3D, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Point3D? Point3D(BoundingBox3D? boundingBox3D, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null || random == null)
             {
@@ -40,7 +40,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Point3D(new Range<double>(min.X, max.X), new Range<double>(min.Y, max.Y), new Range<double>(min.Z, max.Z), random, tolerance);
         }
 
-        public static Point3D? Point3D(Range<double>? x, Range<double>? y, Range<double>? z, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Point3D? Point3D(Range<double>? x, Range<double>? y, Range<double>? z, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)
             {
@@ -52,7 +52,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Point3D(x, y, z, random, tolerance);
         }
 
-        public static Point3D? Point3D(Range<double>? x, Range<double>? y, Range<double>? z, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Point3D? Point3D(Range<double>? x, Range<double>? y, Range<double>? z, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null || random == null)
             {
@@ -62,7 +62,7 @@ namespace DiGi.Geometry.Spatial.Random
             return new Point3D(DiGi.Core.Query.Random(random, x, tolerance), DiGi.Core.Query.Random(random, y, tolerance), DiGi.Core.Query.Random(random, z, tolerance));
         }
 
-        public static Point3D? Point3D(Polygon3D? polygon3D, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Point3D? Point3D(Polygon3D? polygon3D, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygon3D == null)
             {
@@ -74,7 +74,7 @@ namespace DiGi.Geometry.Spatial.Random
             return Point3D(polygon3D, random, tolerance);
         }
 
-        public static Point3D? Point3D(Polygon3D? polygon3D, System.Random? random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static Point3D? Point3D(Polygon3D? polygon3D, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygon3D == null)
             {

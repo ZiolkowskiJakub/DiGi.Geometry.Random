@@ -7,7 +7,7 @@ namespace DiGi.Geometry.Spatial.Random
 {
     public static partial class Create
     {
-        public static PolygonalFace3D? PolygonalFace3D(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static PolygonalFace3D? PolygonalFace3D(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
             {
@@ -19,7 +19,7 @@ namespace DiGi.Geometry.Spatial.Random
             return PolygonalFace3D(boundingBox3D, pointCount, random, tolerance);
         }
 
-        public static PolygonalFace3D? PolygonalFace3D(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static PolygonalFace3D? PolygonalFace3D(BoundingBox3D? boundingBox3D, int pointCount, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null || random == null)
             {
@@ -78,7 +78,7 @@ namespace DiGi.Geometry.Spatial.Random
             return new PolygonalFace3D(plane, polygonalFace2D);
         }
 
-        public static PolygonalFace3D? PolygonalFace3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static PolygonalFace3D? PolygonalFace3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)
             {
@@ -90,7 +90,7 @@ namespace DiGi.Geometry.Spatial.Random
             return PolygonalFace3D(x, y, z, pointCount, random, tolerance);
         }
 
-        public static PolygonalFace3D? PolygonalFace3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random random, double tolerance = DiGi.Core.Constans.Tolerance.MacroDistance)
+        public static PolygonalFace3D? PolygonalFace3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, System.Random random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null || random == null)
             {
