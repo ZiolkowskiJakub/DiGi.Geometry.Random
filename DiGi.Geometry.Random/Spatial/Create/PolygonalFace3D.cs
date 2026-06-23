@@ -1,4 +1,4 @@
-﻿using DiGi.Core.Classes;
+using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Spatial.Classes;
 using System.Collections.Generic;
@@ -55,7 +55,7 @@ namespace DiGi.Geometry.Spatial.Random
             }
 
             Plane? plane = externalEdge.Plane;
-            if (plane != null)
+            if (plane == null)
             {
                 return null;
             }
@@ -95,15 +95,15 @@ namespace DiGi.Geometry.Spatial.Random
         }
 
         /// <summary>
-        /// Generates a <see cref="DiGi.Geometry.Spatial.Classes.PolygonalFace3D" /> within the specified spatial ranges using a set number of points.
+        /// Generates a <see cref="Classes.PolygonalFace3D" /> within the specified spatial ranges using a set number of points.
         /// </summary>
-        /// <param name="x">The <see cref="DiGi.Core.Classes.Range{T}" /> for the X-axis coordinate.</param>
-        /// <param name="y">The <see cref="DiGi.Core.Classes.Range{T}" /> for the Y-axis coordinate.</param>
-        /// <param name="z">The <see cref="DiGi.Core.Classes.Range{T}" /> for the Z-axis coordinate.</param>
+        /// <param name="x">The <see cref="Range{T}" /> for the X-axis coordinate.</param>
+        /// <param name="y">The <see cref="Range{T}" /> for the Y-axis coordinate.</param>
+        /// <param name="z">The <see cref="Range{T}" /> for the Z-axis coordinate.</param>
         /// <param name="pointCount">The number of points to be generated for the polygonal face.</param>
         /// <param name="seed">The seed value used for the random number generator. A value of -1 typically indicates a default or random seed.</param>
         /// <param name="tolerance">The geometric tolerance used for operations, which defaults to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance" />.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Spatial.Classes.PolygonalFace3D" /> instance if the <paramref name="x" />, <paramref name="y" />, and <paramref name="z" /> ranges are provided; otherwise, <c>null</c>.</returns>
+        /// <returns>A <see cref="Classes.PolygonalFace3D" /> instance if the <paramref name="x" />, <paramref name="y" />, and <paramref name="z" /> ranges are provided; otherwise, <c>null</c>.</returns>
         public static PolygonalFace3D? PolygonalFace3D(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)

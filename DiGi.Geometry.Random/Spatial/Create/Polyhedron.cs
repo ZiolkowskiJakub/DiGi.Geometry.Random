@@ -8,13 +8,13 @@ namespace DiGi.Geometry.Spatial.Random
     public static partial class Create
     {
         /// <summary>
-        /// Creates a <see cref="DiGi.Geometry.Spatial.Classes.Polyhedron" /> within the specified <see cref="BoundingBox3D" /> using a random distribution of points.
+        /// Creates a <see cref="Classes.Polyhedron" /> within the specified <see cref="BoundingBox3D" /> using a random distribution of points.
         /// </summary>
         /// <param name="boundingBox3D">The <see cref="BoundingBox3D" /> that defines the spatial boundaries for the polyhedron generation.</param>
         /// <param name="pointCount">The number of points to be used in the creation of the polyhedron.</param>
         /// <param name="seed">The <see cref="int" /> seed value for the random number generator; a value of -1 indicates a non-deterministic seed.</param>
         /// <param name="tolerance">The <see cref="double" /> tolerance used for geometric operations, defaulting to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance" />.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Spatial.Classes.Polyhedron" /> generated within the specified boundaries, or <see langword="null" /> if the <paramref name="boundingBox3D" /> is null.</returns>
+        /// <returns>A <see cref="Classes.Polyhedron" /> generated within the specified boundaries, or <see langword="null" /> if the <paramref name="boundingBox3D" /> is null.</returns>
         public static Polyhedron? Polyhedron(BoundingBox3D? boundingBox3D, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (boundingBox3D == null)
@@ -127,15 +127,15 @@ namespace DiGi.Geometry.Spatial.Random
         }
 
         /// <summary>
-        /// Creates a <see cref="DiGi.Geometry.Spatial.Classes.Polyhedron" /> based on the specified spatial ranges and point count.
+        /// Creates a <see cref="Classes.Polyhedron" /> based on the specified spatial ranges and point count.
         /// </summary>
-        /// <param name="x">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the extent of the X-axis.</param>
-        /// <param name="y">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the extent of the Y-axis.</param>
-        /// <param name="z">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the extent of the Z-axis.</param>
-        /// <param name="pointCount">The number of points to generate for the construction of the <see cref="DiGi.Geometry.Spatial.Classes.Polyhedron" />.</param>
+        /// <param name="x">The <see cref="Range{T}" /> defining the extent of the X-axis.</param>
+        /// <param name="y">The <see cref="Range{T}" /> defining the extent of the Y-axis.</param>
+        /// <param name="z">The <see cref="Range{T}" /> defining the extent of the Z-axis.</param>
+        /// <param name="pointCount">The number of points to generate for the construction of the <see cref="Classes.Polyhedron" />.</param>
         /// <param name="seed">The seed value used for the random number generator; a value of -1 indicates a random seed.</param>
         /// <param name="tolerance">The geometric tolerance used during creation, which defaults to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance" />.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Spatial.Classes.Polyhedron" /> instance if <paramref name="x" />, <paramref name="y" />, and <paramref name="z" /> are all provided; otherwise, null.</returns>
+        /// <returns>A <see cref="Classes.Polyhedron" /> instance if <paramref name="x" />, <paramref name="y" />, and <paramref name="z" /> are all provided; otherwise, null.</returns>
         public static Polyhedron? Polyhedron(Range<double>? x, Range<double>? y, Range<double>? z, int pointCount, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || z == null)

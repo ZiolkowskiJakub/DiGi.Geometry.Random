@@ -56,8 +56,8 @@ namespace DiGi.Geometry.Planar.Random
         /// <summary>
         /// Generates a random <see cref="T:DiGi.Geometry.Planar.Classes.Segment2D" /> based on the provided coordinate ranges, a random seed, and a geometric tolerance.
         /// </summary>
-        /// <param name="x">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the boundaries for the X-axis.</param>
-        /// <param name="y">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the boundaries for the Y-axis.</param>
+        /// <param name="x">The <see cref="Range{T}" /> defining the boundaries for the X-axis.</param>
+        /// <param name="y">The <see cref="Range{T}" /> defining the boundaries for the Y-axis.</param>
         /// <param name="seed">The <see cref="int" /> seed value used to initialize the random number generator.</param>
         /// <param name="tolerance">The <see cref="double" /> tolerance value used for geometric operations, which defaults to <see cref="F:DiGi.Core.Constants.Tolerance.MacroDistance" />.</param>
         /// <returns>A <see cref="T:DiGi.Geometry.Planar.Classes.Segment2D" /> if both <paramref name="x" /> and <paramref name="y" /> are not null; otherwise, null.</returns>

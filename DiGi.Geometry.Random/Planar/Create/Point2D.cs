@@ -9,11 +9,11 @@ namespace DiGi.Geometry.Planar.Random
     public static partial class Create
     {
         /// <summary>
-        /// Generates a <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> within the specified <see cref="BoundingBox2D" />.
+        /// Generates a <see cref="Classes.Point2D" /> within the specified <see cref="BoundingBox2D" />.
         /// </summary>
         /// <param name="boundingBox2D">The <see cref="BoundingBox2D" /> that defines the boundaries for the point generation.</param>
         /// <param name="seed">An <see cref="int" /> used as a seed for the random number generator to ensure reproducibility.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> located within the <paramref name="boundingBox2D" />, or <see langword="null" /> if the <paramref name="boundingBox2D" /> or its minimum and maximum corners are null.</returns>
+        /// <returns>A <see cref="Classes.Point2D" /> located within the <paramref name="boundingBox2D" />, or <see langword="null" /> if the <paramref name="boundingBox2D" /> or its minimum and maximum corners are null.</returns>
         public static Point2D? Point2D(BoundingBox2D? boundingBox2D, int seed = -1)
         {
             if (boundingBox2D == null)
@@ -37,11 +37,11 @@ namespace DiGi.Geometry.Planar.Random
         }
 
         /// <summary>
-        /// Generates a random <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> within the boundaries of the specified <see cref="BoundingBox2D" />.
+        /// Generates a random <see cref="Classes.Point2D" /> within the boundaries of the specified <see cref="BoundingBox2D" />.
         /// </summary>
         /// <param name="boundingBox2D">The <see cref="BoundingBox2D" /> that defines the area from which to generate the point.</param>
         /// <param name="random">The <see cref="System.Random" /> instance used to generate the random coordinates.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> located within the <paramref name="boundingBox2D" />, or <c>null</c> if <paramref name="boundingBox2D" /> is <c>null</c>, <paramref name="random" /> is <c>null</c>, or if the bounding box's minimum or maximum corners are not defined.</returns>
+        /// <returns>A <see cref="Classes.Point2D" /> located within the <paramref name="boundingBox2D" />, or <c>null</c> if <paramref name="boundingBox2D" /> is <c>null</c>, <paramref name="random" /> is <c>null</c>, or if the bounding box's minimum or maximum corners are not defined.</returns>
         public static Point2D? Point2D(BoundingBox2D? boundingBox2D, System.Random? random)
         {
             if (boundingBox2D == null || random == null)
@@ -65,12 +65,12 @@ namespace DiGi.Geometry.Planar.Random
         }
 
         /// <summary>
-        /// Generates a random <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> within the specified X and Y coordinate ranges.
+        /// Generates a random <see cref="Classes.Point2D" /> within the specified X and Y coordinate ranges.
         /// </summary>
-        /// <param name="x">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the range for the X coordinate.</param>
-        /// <param name="y">The <see cref="DiGi.Core.Classes.Range{T}" /> defining the range for the Y coordinate.</param>
+        /// <param name="x">The <see cref="Range{T}" /> defining the range for the X coordinate.</param>
+        /// <param name="y">The <see cref="Range{T}" /> defining the range for the Y coordinate.</param>
         /// <param name="seed">The integer seed used to initialize the random number generator. Defaults to -1.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> if both <paramref name="x" /> and <paramref name="y" /> are not null; otherwise, null.</returns>
+        /// <returns>A <see cref="Classes.Point2D" /> if both <paramref name="x" /> and <paramref name="y" /> are not null; otherwise, null.</returns>
         public static Point2D? Point2D(Range<double>? x, Range<double>? y, int seed = -1)
         {
             if (x == null || y == null)
@@ -82,12 +82,12 @@ namespace DiGi.Geometry.Planar.Random
         }
 
         /// <summary>
-        /// Generates a random <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> within the specified X and Y ranges using the provided <see cref="System.Random" /> instance.
+        /// Generates a random <see cref="Classes.Point2D" /> within the specified X and Y ranges using the provided <see cref="System.Random" /> instance.
         /// </summary>
-        /// <param name="x">The <see cref="DiGi.Core.Classes.Range{T}" /> of <see cref="double" /> values defining the range for the X coordinate.</param>
-        /// <param name="y">The <see cref="DiGi.Core.Classes.Range{T}" /> of <see cref="double" /> values defining the range for the Y coordinate.</param>
+        /// <param name="x">The <see cref="Range{T}" /> of <see cref="double" /> values defining the range for the X coordinate.</param>
+        /// <param name="y">The <see cref="Range{T}" /> of <see cref="double" /> values defining the range for the Y coordinate.</param>
         /// <param name="random">The <see cref="System.Random" /> instance used to generate random numbers within the specified ranges.</param>
-        /// <returns>A new <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> if <paramref name="x" />, <paramref name="y" />, and <paramref name="random" /> are not null; otherwise, <see langword="null" />.</returns>
+        /// <returns>A new <see cref="Classes.Point2D" /> if <paramref name="x" />, <paramref name="y" />, and <paramref name="random" /> are not null; otherwise, <see langword="null" />.</returns>
         public static Point2D? Point2D(Range<double>? x, Range<double>? y, System.Random? random)
         {
             if (x == null || y == null || random == null)
@@ -99,12 +99,12 @@ namespace DiGi.Geometry.Planar.Random
         }
 
         /// <summary>
-        /// Generates a <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> from the specified <see cref="IPolygonal2D" /> object.
+        /// Generates a <see cref="Classes.Point2D" /> from the specified <see cref="IPolygonal2D" /> object.
         /// </summary>
         /// <param name="polygonal2D">The <see cref="IPolygonal2D" /> instance to process. This parameter can be null.</param>
         /// <param name="seed">An <see cref="int" /> value used as the seed for the random number generator.</param>
         /// <param name="tolerance">A <see cref="double" /> representing the distance tolerance, defaulting to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance" />.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Planar.Classes.Point2D" /> instance if <paramref name="polygonal2D" /> is not null; otherwise, null.</returns>
+        /// <returns>A <see cref="Classes.Point2D" /> instance if <paramref name="polygonal2D" /> is not null; otherwise, null.</returns>
         public static Point2D? Point2D(IPolygonal2D? polygonal2D, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (polygonal2D == null)

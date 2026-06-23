@@ -6,11 +6,11 @@ namespace DiGi.Geometry.Planar.Random
     public static partial class Create
     {
         /// <summary>
-        /// Creates a random <see cref="DiGi.Geometry.Planar.Classes.Vector2D" /> based on the specified seed and tolerance.
+        /// Creates a random <see cref="Classes.Vector2D" /> based on the specified seed and tolerance.
         /// </summary>
         /// <param name="seed">The <see cref="int" /> seed used to initialize the random number generator.</param>
         /// <param name="tolerance">The <see cref="double" /> tolerance value, which defaults to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance" />.</param>
-        /// <returns>A randomly generated <see cref="DiGi.Geometry.Planar.Classes.Vector2D" /> instance.</returns>
+        /// <returns>A randomly generated <see cref="Classes.Vector2D" /> instance.</returns>
         public static Vector2D? Vector2D(int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             System.Random random = DiGi.Core.Create.Random(seed);
@@ -92,13 +92,13 @@ namespace DiGi.Geometry.Planar.Random
         }
 
         /// <summary>
-        /// Generates a random <see cref="DiGi.Geometry.Planar.Classes.Vector2D"/> within the specified X and Y ranges using a provided seed and distance tolerance.
+        /// Generates a random <see cref="Classes.Vector2D"/> within the specified X and Y ranges using a provided seed and distance tolerance.
         /// </summary>
-        /// <param name="x">The nullable <see cref="DiGi.Core.Classes.Range{T}"/> for the X-coordinate. If <paramref name="x"/> is null, the method returns null.</param>
-        /// <param name="y">The nullable <see cref="DiGi.Core.Classes.Range{T}"/> for the Y-coordinate. If <paramref name="y"/> is null, the method returns null.</param>
+        /// <param name="x">The nullable <see cref="Range{T}"/> for the X-coordinate. If <paramref name="x"/> is null, the method returns null.</param>
+        /// <param name="y">The nullable <see cref="Range{T}"/> for the Y-coordinate. If <paramref name="y"/> is null, the method returns null.</param>
         /// <param name="seed">The <see cref="int"/> seed used to initialize the random number generator.</param>
         /// <param name="tolerance">The <see cref="double"/> distance tolerance, which defaults to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance"/>.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Planar.Classes.Vector2D"/> if both <paramref name="x"/> and <paramref name="y"/> are non-null; otherwise, null.</returns>
+        /// <returns>A <see cref="Classes.Vector2D"/> if both <paramref name="x"/> and <paramref name="y"/> are non-null; otherwise, null.</returns>
         public static Vector2D? Vector2D(Range<double>? x, Range<double>? y, int seed = -1, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null)
@@ -112,13 +112,13 @@ namespace DiGi.Geometry.Planar.Random
         }
 
         /// <summary>
-        /// Generates a random <see cref="DiGi.Geometry.Planar.Classes.Vector2D"/> within the specified X and Y ranges, ensuring that the length of the resulting vector meets or exceeds the specified tolerance.
+        /// Generates a random <see cref="Classes.Vector2D"/> within the specified X and Y ranges, ensuring that the length of the resulting vector meets or exceeds the specified tolerance.
         /// </summary>
-        /// <param name="x">The <see cref="DiGi.Core.Classes.Range{T}"/> for the X coordinate.</param>
-        /// <param name="y">The <see cref="DiGi.Core.Classes.Range{T}"/> for the Y coordinate.</param>
+        /// <param name="x">The <see cref="Range{T}"/> for the X coordinate.</param>
+        /// <param name="y">The <see cref="Range{T}"/> for the Y coordinate.</param>
         /// <param name="random">The <see cref="System.Random"/> instance used to generate random values.</param>
-        /// <param name="tolerance">The minimum length threshold that the generated <see cref="DiGi.Geometry.Planar.Classes.Vector2D"/> must satisfy. Defaults to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance"/>.</param>
-        /// <returns>A <see cref="DiGi.Geometry.Planar.Classes.Vector2D"/> that satisfies the tolerance requirement, or <see langword="null"/> if <paramref name="x"/>, <paramref name="y"/>, or <paramref name="random"/> is null.</returns>
+        /// <param name="tolerance">The minimum length threshold that the generated <see cref="Classes.Vector2D"/> must satisfy. Defaults to <see cref="DiGi.Core.Constants.Tolerance.MacroDistance"/>.</param>
+        /// <returns>A <see cref="Classes.Vector2D"/> that satisfies the tolerance requirement, or <see langword="null"/> if <paramref name="x"/>, <paramref name="y"/>, or <paramref name="random"/> is null.</returns>
         public static Vector2D? Vector2D(Range<double>? x, Range<double>? y, System.Random? random, double tolerance = DiGi.Core.Constants.Tolerance.MacroDistance)
         {
             if (x == null || y == null || random == null)
