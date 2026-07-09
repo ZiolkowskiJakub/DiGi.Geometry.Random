@@ -1,4 +1,4 @@
-﻿using DiGi.Core.Classes;
+using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Planar.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
@@ -50,7 +50,7 @@ namespace DiGi.Geometry.Spatial.Random
             }
 
             PlanarIntersectionResult? planarIntersectionResult = Spatial.Create.PlanarIntersectionResult(plane, boundingBox3D, tolerance);
-            if (planarIntersectionResult == null || !planarIntersectionResult.Intersect)
+            if (planarIntersectionResult == null || !planarIntersectionResult.Any())
             {
                 return null;
             }

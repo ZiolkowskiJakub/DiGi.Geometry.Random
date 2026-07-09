@@ -1,4 +1,4 @@
-﻿using DiGi.Core.Classes;
+using DiGi.Core.Classes;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace DiGi.Geometry.Spatial.Random
                 for (int i = 0; i < point3Ds.Count; i++)
                 {
                     IntersectionResult3D? intersectionResult3D = Spatial.Create.IntersectionResult3D(boundingBox3D, point3Ds[i], normal, tolerance);
-                    if (intersectionResult3D == null || !intersectionResult3D.Intersect)
+                    if (intersectionResult3D == null || !intersectionResult3D.Any())
                     {
                         continue;
                     }

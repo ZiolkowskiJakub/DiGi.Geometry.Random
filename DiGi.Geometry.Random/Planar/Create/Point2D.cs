@@ -1,4 +1,4 @@
-﻿using DiGi.Core.Classes;
+using DiGi.Core.Classes;
 using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Planar.Interfaces;
 using DiGi.Math.Classes;
@@ -142,7 +142,7 @@ namespace DiGi.Geometry.Planar.Random
             Line2D line2D = new(new Point2D(x, 0), Constants.Vector2D.WorldY);
 
             IntersectionResult2D? intersectionResult2D = Planar.Create.IntersectionResult2D(polygonal2D, line2D, tolerance);
-            if (intersectionResult2D == null || !intersectionResult2D.Intersect)
+            if (intersectionResult2D == null || !intersectionResult2D.Any())
             {
                 return null;
             }
@@ -292,7 +292,7 @@ namespace DiGi.Geometry.Planar.Random
                 if (!double.IsNaN(y))
                 {
                     IntersectionResult2D? intersectionResult2D = Planar.Create.IntersectionResult2D(polygonalFace2D, new Line2D(new Point2D(0, y), Constants.Vector2D.WorldX), tolerance);
-                    if (intersectionResult2D != null && intersectionResult2D.Intersect)
+                    if (intersectionResult2D != null && intersectionResult2D.Any())
                     {
                     }
                 }
