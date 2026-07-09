@@ -1,4 +1,4 @@
-#### [DiGi\.Geometry\.Random](index.md 'index')
+#### [DiGi\.Geometry\.Random](DiGi.Geometry.Random.Overview.md 'DiGi\.Geometry\.Random\.Overview')
 
 ## DiGi\.Geometry\.Spatial\.Random Namespace
 ### Classes
